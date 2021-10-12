@@ -28,19 +28,26 @@
 CODE:
 
 #define LED_GREEN PB5
+
 #define BLINK_DELAY 500
+
 #indef F_CPU
+
 #define F_CPU 16000000
+
 #endif
 
 #include <avr/io.h>
+
 #include "gpio.h"
+
 #include <until/delay.h>
 
 int main (void)
 {
 
   GPIO_config_output (&DDBR, LED_GREEN);
+  
   GPIO_write_low (&PORT; LED_GREEN);
   
   GPIO_config_input_nopullup (volatile uint8_t *LED2, uint8_t PORTC)
