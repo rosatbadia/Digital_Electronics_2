@@ -34,7 +34,9 @@
 
 uint8_t customChar[16] = {
 
-  0b11111,
+//LETTER "E":
+
+  	0b11111,
   
 	0b10000,
   
@@ -49,8 +51,10 @@ uint8_t customChar[16] = {
 	0b10000,
   
 	0b11111,
+	
+//LETTER "T":
   
-  0b11111,
+ 	0b11111,
   
 	0b00100,
   
@@ -68,6 +72,34 @@ uint8_t customChar[16] = {
 
 };
 
+int main(void)
+{
+
+    // Initialize LCD display
+    
+    lcd_init(LCD_DISP_ON);
+
+    // Set pointer to beginning of CGRAM memory
+    
+    lcd_command(1 << LCD_CGRAM);
+    
+    for (uint8_t i = 0; i < 16; i++)
+    {
+        // Store all new chars to memory line by line
+	
+        lcd_data(customChar[i]);
+    }
+  
+    // Set DDRAM address
+    
+    lcd_command(1 << LCD_DDRAM);
+    
+    // Display first custom character
+    
+    lcd_putc(0);
+
 ### Kitchen alarm
 
 **1. Scheme of kitchen alarm; do not forget the supply voltage. The image can be drawn on a computer or by hand. Always name all components and their values.**
+
+![simulidd](https://user-images.githubusercontent.com/91876413/139722824-e9faacfa-86bd-48a3-96eb-111dd6ab32ba.jpeg)
