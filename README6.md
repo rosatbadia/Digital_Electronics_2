@@ -34,3 +34,20 @@ ISR(ADC_vect)
 
 }
 ```
+
+### UART communication
+
+**1. (Hand-drawn) picture of UART signal when transmitting three character data `De2` in 4800 7O2 mode (7 data bits, odd parity, 2 stop bits, 4800&nbsp;Bd).**
+
+![imaage](https://user-images.githubusercontent.com/91876413/140769419-a414ab92-a9a9-4f74-9241-d6f76d0bf780.jpeg)
+
+**2. Flowchart figure for function `uint8_t get_parity(uint8_t data, uint8_t type)` which calculates a parity bit of input 8-bit `data` according to parameter `type`. The image can be drawn on a computer or by hand. Use clear descriptions of the individual steps of the algorithms.**
+
+
+
+
+### Temperature meter
+
+**1. Scheme of temperature meter. The image can be drawn on a computer or by hand. Always name all components and their values.**
+
+
