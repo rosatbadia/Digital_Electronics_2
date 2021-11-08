@@ -9,11 +9,11 @@
    | **Push button** | **PC0[A0] voltage** | **ADC value (calculated)** | **ADC value (measured)** |
    | :-: | :-: | :-: | :-: |
    | Right  | 0&nbsp;V | 0   |  |
-   | Up     | 0.495&nbsp;V | 101.27 |  |
-   | Down   | 0.784&nbsp;V | 160.4  |  |
-   | Left   | 1.01&nbsp;V  | 206.64 |  |
-   | Select | 2&nbsp;V     | 409.2  |  |
-   | none   |  5&nbsp;V    | 1023   |  |
+   | Up     | 0.495&nbsp;V | 101.27 | 100-101 |
+   | Down   | 0.784&nbsp;V | 160.4  | 159-160 |
+   | Left   | 1.01&nbsp;V  | 206.64 | 206-207 |
+   | Select | 2&nbsp;V     | 409.2  | 408-409 |
+   | none   |  5&nbsp;V    | 1023   | 1023-1024 |
    
  **2. Code listing of ACD interrupt service routine for sending data to the LCD/UART and identification of the pressed button. Always use syntax highlighting and meaningful comments:**
 
@@ -52,3 +52,4 @@ ISR(ADC_vect)
 **1. Scheme of temperature meter. The image can be drawn on a computer or by hand. Always name all components and their values.**
 
 
+![scheme lcd](https://user-images.githubusercontent.com/91876413/140788254-769f2c65-ac5f-43d7-b9d8-0e6f99703d7a.jpeg)
