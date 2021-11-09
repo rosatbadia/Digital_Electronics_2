@@ -29,8 +29,64 @@ ISR(ADC_vect)
 
     value = ADC;                  // Copy ADC result to 16-bit variable
     itoa(value, lcd_string, 10);  // Convert decimal value to string
+    
+    // Initialize LCD display
+    lcd_init(LCD_DISP_ON);
+    lcd_gotoxy(0, 1);
 
-    // WRITE YOUR CODE HERE
+    switch (lcd_key)               // depending on which button was pushed, we perform an action
+  {
+  case btnRIGHT:
+    {
+      lcd_puts("RIGHT ");
+      break;
+    }
+  case btnLEFT:
+    {
+      lcd_puts("LEFT   ");
+      break;
+    }
+  case btnUP:
+    {
+      lcd_puts("UP    ");
+      break;
+    }
+  case btnDOWN:
+    {
+      lcd_puts("DOWN  ");
+      break;
+    }
+  case btnSELECT:
+    {
+      lcd_puts("SELECT");
+      break;
+    }
+  case btnNONE:
+    {
+      lcd_puts("NONE  ");
+      break;
+    }
+  }
+
+}
+
+
+int read_LCD_buttons()
+{
+  adc_key_in = analogRead(0);      // read the value from the sensor 
+  delay(5); //switch debounce delay
+  int k = (analogRead(0) - adc_key_in); 
+  if (5 < abs(k)) return btnNONE;  // double checks the keypress
+  
+  if (adc_key_in > 1023) return btnNONE; 
+  if (adc_key_in < 100)   return btnRIGHT;  
+  if (adc_key_in < 159)  return btnUP; 
+  if (adc_key_in < 206)  return btnDOWN; 
+  if (adc_key_in < 408)  return btnLEFT; 
+  if (adc_key_in < 1023)  return btnSELECT;   
+  return btnNONE;  // when all others fail, return this...
+}
+
 
 }
 ```
