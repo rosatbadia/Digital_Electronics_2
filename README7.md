@@ -1,6 +1,6 @@
 # Lab 8: ADRIÁN ROSAT
 
-https://github.com/rosatbadia/Digital_Electronics_2/tree/main/%7BLabs%7D
+(https://github.com/rosatbadia/Digital_Electronics_2/blob/main/README7.md)
 
 ### Arduino Uno pinout
 
