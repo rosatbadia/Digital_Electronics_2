@@ -42,6 +42,7 @@ ISR(TIMER1_OVF_vect)
                     uart_puts_P("\r\nScan I2C-bus for devices:\r\n");
                     addr = 0;
                 }
+                
         break;
     
     // Transmit I2C slave address and get result
@@ -57,6 +58,14 @@ ISR(TIMER1_OVF_vect)
         twi_stop();
         /* Test result from I2C bus. If it is 0 then move to ACK state, 
          * otherwise move to IDLE */
+         
+         if (result ==0)
+         
+              state = STATE_ACK;
+            
+         else
+            
+             state = STATE_IDLE;
 
         break;
 
