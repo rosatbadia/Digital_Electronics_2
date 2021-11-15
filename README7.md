@@ -34,8 +34,14 @@ ISR(TIMER1_OVF_vect)
     // Increment I2C slave address
     case STATE_IDLE:
         addr++;
+        
         // If slave address is between 8 and 119 then move to SEND state
-
+                if (addr > 7 && addr < 120)
+                    state = STATA_SEND;
+                if ( addr > 120){
+                    uart_puts_P("\r\nScan I2C-bus for devices:\r\n");
+                    addr = 0;
+                }
         break;
     
     // Transmit I2C slave address and get result
@@ -57,7 +63,12 @@ ISR(TIMER1_OVF_vect)
     // A module connected to the bus was found
     case STATE_ACK:
         // Send info about active I2C slave to UART and move to IDLE
-
+        itoa(addr, uart_string, 10);
+        uart_puts_P("Found device at adress: ");
+        uart_puts(uart_string);
+        uart_puts_P("\r\n");
+        state = STATE_IDLE;
+        
         break;
 
     // If something unexpected happens then move to IDLE
@@ -66,6 +77,15 @@ ISR(TIMER1_OVF_vect)
         break;
     }
 }
+
+
+
+
+
+
+
+
+
 ```
 
 **2. (Hand-drawn) picture of I2C signals when reading checksum (only 1 byte) from DHT12 sensor. Indicate which specific moments control the data line master and which slave.**
